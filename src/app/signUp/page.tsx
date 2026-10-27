@@ -1,8 +1,8 @@
 'use client'
 
 import { createClient } from "@/lib/supabase/client"
-import { useRouter } from "next/router"
-import React, { useState } from "react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import Link from "next/link"
 
 export default function SignUpPage() {
@@ -20,7 +20,7 @@ export default function SignUpPage() {
         
         const { error } = await supabase.auth.signUp({
             email,
-            password
+            password,
         })
 
         if (error) {
@@ -42,34 +42,34 @@ export default function SignUpPage() {
             )}
     
             <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 border rounded-lg"
-            required
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full p-3 border rounded-lg"
+                required
             />
     
             <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 border rounded-lg"
-            minLength={6}
-            required
+                type="password"
+                placeholder="Password (min 6 characters)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full p-3 border rounded-lg"
+                minLength={6}
+                required
             />
     
             <button
-            type="submit"
-            disabled={loading}
-            className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                type="submit"
+                disabled={loading}
+                className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
             >
             {loading ? 'Creating account...' : 'Sign Up'}
             </button>
     
             <p className="text-center text-sm">
-            Already have an account?{' '}
+                Already have an account?{' '}
             <Link href="/login" className="text-blue-600 hover:underline">
                 Log in
             </Link>

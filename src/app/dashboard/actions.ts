@@ -45,6 +45,6 @@ export async function deleteTask(taskId: string) {
 
 export async function signOut() {
     const supabase = await createClient()
-    await supabase.auth.signOut
+    await supabase.auth.signOut()
     
 }
